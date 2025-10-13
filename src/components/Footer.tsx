@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="flex space-x-6">
             <a
               href="mailto:chen@example.com"
-              className="hover:text-white transition-colors text-sm"
+              className="hover:text-white transition-colors text-sm text-gradient-energy"
             >
               Email
             </a>
@@ -17,7 +17,7 @@ export default function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors text-sm"
+              className="hover:text-white transition-colors text-sm text-gradient-energy"
             >
               Instagram
             </a>
@@ -25,7 +25,7 @@ export default function Footer() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-white transition-colors text-sm"
+              className="hover:text-white transition-colors text-sm text-gradient-energy"
             >
               Twitter
             </a>

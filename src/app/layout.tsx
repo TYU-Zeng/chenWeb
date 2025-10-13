@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const geistSans = Geist({
@@ -27,10 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased purple-theme`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased cyberpunk-theme`}
       >
-        <Header />
-        <main className="mt-48">
+        {/* Accent background overlay, keeps body background image visible */}
+        <div className="pointer-events-none fixed inset-0 -z-10 accent-gradient" />
+        <main className="mt-6 md:mt-10">
           {children}
         </main>
         <Footer />

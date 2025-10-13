@@ -26,7 +26,7 @@ export default function AboutPage() {
             {/* Left: Avatar */}
             <Reveal>
               <div className="flex md:block justify-center">
-                <div className="relative w-64 h-64 rounded-full overflow-hidden ring-4 ring-foreground/10">
+                <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden ring-4 ring-foreground/10">
                   <Image src={author.avatar} alt={author.name} fill className="object-cover" />
                 </div>
               </div>

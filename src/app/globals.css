@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* CyberCrownFour Font */
+@font-face {
+  font-family: 'CyberCrownFour';
+  src: url('/fonts/CyberCrownFour-lx5vw.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Light mode - Ivory White */
 :root {
   --background: #FFFFF0;
@@ -96,6 +105,15 @@
     0 0 42px rgba(40, 217, 239, 0.45);
 }
 
+/* Strong pink-purple text glow */
+.neon-text-pink-strong {
+  color: #fff6ff;
+  text-shadow:
+    0 0 8px rgba(240, 63, 222, 0.9),   /* hot pink core */
+    0 0 22px rgba(200, 70, 255, 0.55), /* magenta spread */
+    0 0 42px rgba(124, 46, 193, 0.45); /* purple outer */
+}
+
 .neon-border {
   border: 1px solid var(--glass-border);
   box-shadow: 0 0 0 1px rgba(124, 46, 193, 0.25) inset,
@@ -129,8 +147,29 @@
               inset 0 0 120px rgba(124, 46, 193, 0.18);
 }
 
-/* Strong cyan halo for key visuals */
+/* Strong purple halo for key visuals (used by chen-2) */
 .neon-image-strong {
+  /* chromatic edge + purple neon */
+  filter:
+    drop-shadow(2px 0 rgba(124, 46, 193, 0.38)) /* purple right */
+    drop-shadow(-2px 0 rgba(40, 217, 239, 0.35)) /* cyan left */
+    drop-shadow(0 0 26px rgba(124, 46, 193, 0.75))
+    drop-shadow(0 0 60px rgba(124, 46, 193, 0.45))
+    drop-shadow(0 0 90px rgba(124, 46, 193, 0.35));
+  animation: jitterSoft 2.2s ease-in-out infinite;
+}
+
+@keyframes jitterSoft {
+  0% { transform: translate3d(0, 0, 0); }
+  20% { transform: translate3d(0.6px, -0.6px, 0); }
+  40% { transform: translate3d(-0.6px, 0.4px, 0); }
+  60% { transform: translate3d(0.4px, 0.6px, 0); }
+  80% { transform: translate3d(-0.4px, -0.4px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+/* Strong cyan halo for key visuals (used by chen-1) */
+.neon-image-cyan {
   filter:
     drop-shadow(0 0 26px rgba(40, 217, 239, 0.75))
     drop-shadow(0 0 60px rgba(40, 217, 239, 0.45))
@@ -152,7 +191,16 @@
     0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
+/* Purple container halo (used by chen-2) */
 .neon-halo-strong {
+  box-shadow:
+    0 0 28px rgba(124, 46, 193, 0.75),
+    0 0 80px rgba(124, 46, 193, 0.45),
+    0 0 120px rgba(124, 46, 193, 0.35);
+}
+
+/* Cyan container halo (used by chen-1) */
+.neon-halo-cyan {
   box-shadow:
     0 0 28px rgba(40, 217, 239, 0.75),
     0 0 80px rgba(40, 217, 239, 0.45),
@@ -183,7 +231,7 @@ html {
 }
 
 body {
-  background: var(--background) url('/assets/images/bg.jpg') center center / cover no-repeat fixed;
+  background: var(--background) url('/assets/images/bg2.jpg') center center / cover no-repeat fixed;
   color: var(--foreground);
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;

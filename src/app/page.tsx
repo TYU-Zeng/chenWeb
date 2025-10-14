@@ -106,8 +106,11 @@ export default function Home() {
               <Reveal>
                 <div className="mx-auto max-w-4xl text-center px-4">             
                   <div className="flex flex-col items-center gap-1 md:gap-2">
-                    <CyberText text="I’m not hustling anymore," className="text-4xl md:text-6xl" glow={dimmed} />
-                    <CyberText text="but I’m still creating." className="text-4xl md:text-6xl" glow={dimmed} />
+                    
+                    <div style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
+                    <CyberText text="I'm not hustling anymore," className="text-4xl md:text-6xl" glow={true} glowColor={dimmed ? "pink" : "cyan"} />
+                    <CyberText text="but I'm still creating." className="text-4xl md:text-6xl" glow={true} glowColor={dimmed ? "pink" : "cyan"} />
+                    </div>
 
                     <span className="inline-flex items-center gap-2 md:gap-3 align-middle">
                       <span className={`${dimmed ? 'neon-glow-pink' : 'text-white/85'} text-sm md:text-base`}>By ZheChen - s3872176</span>
@@ -182,14 +185,14 @@ export default function Home() {
               <div className="order-1 max-w-[1400px] mx-auto w-full relative z-10">
                 <Reveal>
                   <div className="w-full flex items-center justify-center">
-                    <div className={`relative rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-strong' : 'halo-neutral'}`}>
+                    <div className={`relative rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-cyan' : 'halo-neutral'}`}>
                     <Image
                       src={first.coverImage}
                       alt={first.title}
                         width={1400}
                         height={1800}
                       priority
-                        className={`w-auto max-w-full h-auto object-contain rounded-2xl ${dimmed ? '' : 'neon-image-soft'}`}
+                        className={`w-auto max-w-full h-auto object-contain rounded-2xl ${dimmed ? 'neon-image-cyan' : 'neon-image-soft'}`}
                     />
                     </div>
                   </div>
@@ -197,7 +200,7 @@ export default function Home() {
               </div>
 
               {/* Right: title (lights on) or description (lights off) */}
-              <div className={`order-2 max-w-1xl md:max-w-1xl w-full relative z-10 -ml-12 justify-self-start ${dimmed ? 'neon-text-cyan-strong' : ''}`}
+              <div className={`order-2 max-w-1xl md:max-w-1xl w-full relative z-10 -ml-12 justify-self-start overflow-visible ${dimmed ? 'neon-text-cyan-strong' : ''}`}
               >
                 <AnimatePresence mode="wait">
                   {!dimmed ? (
@@ -210,10 +213,10 @@ export default function Home() {
                       className="text-center"
                     >
                       <div className="h-[280px] bg-transparent"></div>
-                      <h3 className="text-2xl md:text-3xl font-medium text-white/90 mb-2">
+                      <h3 className="text-6xl font-medium text-white/90 mb-2" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
                         Digital Dreams
                       </h3>
-                      <p className="text-base md:text-lg text-white/70">
+                      <p className="text-base md:text-lg text-white/70" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
                         A journey through cyber aesthetics
                       </p>
                     </motion.div>
@@ -224,10 +227,10 @@ export default function Home() {
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: 24, opacity: 0 }}
                       transition={{ duration: 0.5 }}
-                      className={`p-6 text-center ${dimmed ? 'neon-glow-purple' : ''}`}
+                      className="p-6 text-center"
                     >
-                      <div className="mb-3">
-                        <CyberText text="Story" className="text-4xl" glow={dimmed} glowColor="pink" />
+                      <div className="mb-3" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
+                        <CyberText text="Story" className="text-6xl" glow={dimmed} glowColor={dimmed ? "pink" : "cyan"} />
                       </div>
                       <div className="h-[10px] bg-transparent"></div>
                       <p className="leading-relaxed mb-4">{first.description}</p>
@@ -249,8 +252,13 @@ export default function Home() {
             {/* Button and Description Area */}
             <div className="mt-72 flex flex-col items-center gap-8">
               <Reveal delayMs={120}>
-                <div onClick={handleActivate} className="cursor-pointer">
-                  <IconButton iconSrc="/assets/images/icon1.png" alt="action" size={230} />
+                <div className="flex items-center justify-center gap-10">
+                  <div onClick={handleActivate} className="cursor-pointer">
+                    <IconButton iconSrc="/assets/images/icon1.png" alt="action" size={230} />
+                  </div>
+                  {/* Static icons (icon2 & icon3) - not buttons */}
+                  <Image src="/assets/images/icon2.png" alt="icon 2" width={220} height={220} className="object-contain" />
+                  <Image src="/assets/images/icon3.png" alt="icon 3" width={220} height={220} className="object-contain" />
                 </div>
               </Reveal>
               {showBox && (
@@ -261,12 +269,13 @@ export default function Home() {
                   <div className="h-[px] bg-transparent"></div>
                   <div
                     className="overflow-hidden transition-[max-height] ease-out"
-                    style={{ maxHeight: `${visibleLines * lineHeightPx}px`, transitionDuration: `${speedMs}ms` }}
+                    style={{ maxHeight: `${visibleLines * lineHeightPx + 160}px`, transitionDuration: `${speedMs}ms` }}
                   >
                     <StreamingText
                       text={streamingText}
                       isActive={showText}
                       speed={speedMs}
+                      dimmed={dimmed}
                     />
                   </div>
                   <style jsx>{`
@@ -315,16 +324,51 @@ export default function Home() {
               </motion.button>
             </div>
 
+            <div className="h-[60px] bg-transparent"></div>
 
-          {/* p2: More Content */}
-          {/* Gallery Section */}
-          
+            {/* Part: Chen-2 + Story block */}
+            <div className="w-full flex flex-col items-center justify-center gap-10 mt-8 mb-24">
+              {/* chen-2 image */}
+              <Reveal>
+                <div className={`relative rounded-3xl overflow-hidden ${dimmed ? 'neon-halo-strong' : 'halo-neutral'}`}>
+                  <Image
+                    src="/assets/images/chen-2.png"
+                    alt="Chen artwork 2"
+                    width={500}
+                    height={500}
+                    priority
+                    className={`w-auto max-w-full h-auto object-contain rounded-2xl ${dimmed ? 'neon-image-strong' : 'neon-image-soft'}`}
+                  />
+                </div>
+              </Reveal>
 
-           <div className="h-[160px] md:h-[240px] bg-transparent"></div>
-
-
-
+              {/* story title + description */}
+              <div className={`order-2 max-w-2xl  w-full relative z-10 justify-self-start overflow-visible ${dimmed ? 'neon-text-pink-strong' : ''}`}>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key="desc"
+                    initial={{ x: 24, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: 24, opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className={`text-center glass-card neon-border rounded-2xl px-10 md:px-20 ${dimmed ? 'neon-halo-strong' : ''}`}
+                  >
+                    <div className="mx-auto max-w-[60ch] md:max-w-[68ch]">
+                      <div className="h-[40px] bg-transparent"></div>
+                      <div className="mb-3" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
+                        <CyberText text="Story" className="text-6xl" glow={dimmed} glowColor={dimmed ? 'yellow' : 'cyan'} />
+                      </div>
+                      <div className="h-[10px] bg-transparent"></div>
+                      <p className="leading-relaxed mb-4">{first.description}</p>
+                      <p className="whitespace-pre-line">{first.story}</p>
+                      <div className="h-[60px] bg-transparent"></div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
         </div>
+        <div className="h-[160px] md:h-[240px] bg-transparent"></div>
       </div>
     </div>
   );

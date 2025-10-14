@@ -7,6 +7,7 @@ type StreamingTextProps = {
   isActive: boolean;
   speed?: number; // ms per line (stagger delay)
   className?: string;
+  dimmed?: boolean;
 };
 
 export default function StreamingText({
@@ -14,6 +15,7 @@ export default function StreamingText({
   isActive,
   speed = 500,
   className = '',
+  dimmed = false,
 }: StreamingTextProps) {
   const lines = useMemo(() => {
     return text.split('\n').filter(line => line.trim() !== '');
@@ -22,11 +24,11 @@ export default function StreamingText({
   if (!isActive) return null;
 
   return (
-    <div className={`space-y-2 ${className}`}>
+    <div className={`space-y-2 text-center py-[80px] ${className}`}>
       {lines.map((line, index) => (
         <div
           key={index}
-          className="text-white/90 leading-relaxed font-light opacity-0"
+          className={`leading-relaxed font-light opacity-0 ${dimmed ? 'neon-glow-purple' : 'text-white/90'}`}
           style={{
             animation: `staggerLineIn 600ms ease-out forwards`,
             animationDelay: `${index * speed}ms`,

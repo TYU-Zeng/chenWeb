@@ -79,6 +79,14 @@
                0 0 38px rgba(240, 63, 222, 0.35);
 }
 
+/* Purple neon glow for lights-off states */
+.neon-glow-purple {
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(124, 46, 193, 0.75),
+               0 0 22px rgba(124, 46, 193, 0.55),
+               0 0 38px rgba(124, 46, 193, 0.35);
+}
+
 /* Strong cyan text glow for lights-off states */
 .neon-text-cyan-strong {
   color: #eaffff;

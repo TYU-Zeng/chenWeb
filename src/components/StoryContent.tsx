@@ -5,6 +5,7 @@ type StoryContentProps = {
   description?: string;
   story: string;
   className?: string;
+  dimmed?: boolean;
 };
 
 export default function StoryContent({
@@ -12,10 +13,11 @@ export default function StoryContent({
   description,
   story,
   className = "",
+  dimmed = false,
 }: StoryContentProps) {
   return (
     <section className={`space-y-0 ${className}`}>
-      <div className="px-6 py-6 md:px-8 md:py-8">
+      <div className={`px-6 py-6 md:px-8 md:py-8 text-center ${dimmed ? 'neon-glow-purple' : ''}`}>
         <h2 className="text-2xl md:text-3xl font-light tracking-wide" style={{ color: 'var(--foreground)' }}>{title}</h2>
         <div className="h-[30px] bg-transparent"></div>
         {description ? (

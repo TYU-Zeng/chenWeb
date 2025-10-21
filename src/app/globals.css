@@ -45,6 +45,37 @@
   --glass-border: rgba(255, 255, 255, 0.26);
 }
 
+/* Custom cyan glow for CyberText */
+.custom-blue-glow {
+  color: #00ffff !important;
+  text-shadow: 
+    0 0 8px rgba(0, 255, 255, 0.8),
+    0 0 16px rgba(0, 255, 255, 0.6),
+    0 0 24px rgba(0, 255, 255, 0.4),
+    0 0 32px rgba(0, 255, 255, 0.2) !important;
+}
+
+.custom-blue-glow * {
+  color: #00ffff !important;
+  text-shadow: 
+    0 0 8px rgba(0, 255, 255, 0.8),
+    0 0 16px rgba(0, 255, 255, 0.6),
+    0 0 24px rgba(0, 255, 255, 0.4),
+    0 0 32px rgba(0, 255, 255, 0.2) !important;
+}
+
+/* Force cyan glow for all elements inside custom-blue-glow */
+.custom-blue-glow span,
+.custom-blue-glow div,
+.custom-blue-glow * {
+  color: #00ffff !important;
+  text-shadow: 
+    0 0 10px rgba(0, 255, 255, 0.9),
+    0 0 20px rgba(0, 255, 255, 0.7),
+    0 0 30px rgba(0, 255, 255, 0.5),
+    0 0 40px rgba(0, 255, 255, 0.3) !important;
+}
+
 /* Optional purple demo theme */
 .purple-theme {
   --foreground: #f5f5f7;

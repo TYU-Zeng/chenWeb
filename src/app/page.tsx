@@ -16,6 +16,9 @@ export default function Home() {
   const [showBox, setShowBox] = useState(false);
   const [showText, setShowText] = useState(false);
   const [dimmed, setDimmed] = useState(false);
+  
+  // 获取基础路径
+  const basePath = process.env.NODE_ENV === 'production' ? '/chenWeb' : '';
   const streamingText = `This is a beautiful moment captured in the early morning light.
                         The scene tells a story of tranquility and natural beauty.
                         Every element comes together in perfect harmony.
@@ -55,7 +58,6 @@ export default function Home() {
   // 根据 dimmed 状态切换背景图片
   useEffect(() => {
     const body = document.body;
-    const basePath = process.env.NODE_ENV === 'production' ? '/chenWeb' : '';
     // 开灯和关灯都使用 bg.jpg
     body.style.background = `var(--background) url('${basePath}/assets/images/bg.jpg') center center / cover no-repeat fixed`;
     
@@ -63,7 +65,7 @@ export default function Home() {
     return () => {
       body.style.background = 'var(--background)';
     };
-  }, [dimmed]);
+  }, [dimmed, basePath]);
 
   return (
     <div className="min-h-screen relative">
@@ -72,7 +74,7 @@ export default function Home() {
         {/* Icon 1 - Random position */}
         <div className="absolute top-[15%] left-[8%] opacity-100">
           <Image 
-            src="/assets/images/icon1.png" 
+            src={`${basePath}/assets/images/icon1.png`}
             alt="icon 1" 
             width={200} 
             height={200} 
@@ -83,7 +85,7 @@ export default function Home() {
         {/* Icon 2 - Random position */}
         <div className="absolute top-[25%] right-[12%] opacity-100">
           <Image 
-            src="/assets/images/icon2.png" 
+            src={`${basePath}/assets/images/icon2.png`}
             alt="icon 2" 
             width={180} 
             height={180} 
@@ -94,7 +96,7 @@ export default function Home() {
         {/* Icon 3 - Random position */}
         <div className="absolute top-[60%] left-[5%] opacity-100">
           <Image 
-            src="/assets/images/icon3.png" 
+            src={`${basePath}/assets/images/icon3.png`}
             alt="icon 3" 
             width={220} 
             height={220} 
@@ -105,7 +107,7 @@ export default function Home() {
         {/* Icon 4 - Random position */}
         <div className="absolute top-[40%] right-[6%] opacity-100">
           <Image 
-            src="/assets/images/icon4.png" 
+            src={`${basePath}/assets/images/icon4.png`}
             alt="icon 4" 
             width={190} 
             height={190} 
@@ -116,7 +118,7 @@ export default function Home() {
         {/* Icon 5 - Random position */}
         <div className="absolute top-[75%] left-[15%] opacity-100">
           <Image 
-            src="/assets/images/icon5.png" 
+            src={`${basePath}/assets/images/icon5.png`}
             alt="icon 5" 
             width={210} 
             height={210} 
@@ -149,7 +151,7 @@ export default function Home() {
               <Reveal delayMs={300}>
                 <div className="relative w-full max-w-[300px] sm:max-w-[400px] md:max-w-[600px] lg:max-w-[800px] mx-auto">
                   <Image
-                    src="/assets/images/logo.png"
+                    src={`${basePath}/assets/images/logo.png`}
                     alt="Logo"
                     width={1200}
                     height={1200}
@@ -183,7 +185,7 @@ export default function Home() {
                             className={`relative inline-block w-6 h-6 sm:w-7 sm:h-7 md:w-9 md:h-9 rounded-full overflow-hidden border-2}`}
                             style={dimmed ? { border: '2px solid rgba(240,63,222,0.9)', boxShadow: '0 0 18px rgba(240,63,222,0.75), 0 0 42px rgba(240,63,222,0.45)' } : { border: '2px solid hsla(292, 100.00%, 84.70%, 0.90)' }}
                           >
-                            <Image src="/assets/images/chen-1.jpg" alt="Chen avatar" fill className="object-cover" />
+                            <Image src={`${basePath}/assets/images/chen-1.jpg`} alt="Chen avatar" fill className="object-cover" />
                           </span>
                         </span>
                       </div>
@@ -248,7 +250,7 @@ export default function Home() {
                       transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                         style={{ boxShadow: dimmed ? '0 0 12px rgba(240,63,222,0.9), 0 0 28px rgba(240,63,222,0.55)' : '0 0 8px rgba(0,0,0,0.25)' }}
                     >
-                        <Image src="/assets/images/light_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="light" width={18} height={18} style={{ filter: dimmed ? 'brightness(0) saturate(100%) invert(78%) sepia(23%) saturate(7488%) hue-rotate(299deg) brightness(104%) contrast(101%) drop-shadow(0 0 8px rgba(240,63,222,0.9)) drop-shadow(0 0 16px rgba(240,63,222,0.55))' : 'none' }} />
+                        <Image src={`${basePath}/assets/images/light_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg`} alt="light" width={18} height={18} style={{ filter: dimmed ? 'brightness(0) saturate(100%) invert(78%) sepia(23%) saturate(7488%) hue-rotate(299deg) brightness(104%) contrast(101%) drop-shadow(0 0 8px rgba(240,63,222,0.9)) drop-shadow(0 0 16px rgba(240,63,222,0.55))' : 'none' }} />
                     </motion.div>
                   </motion.div>
                 </div>
@@ -284,7 +286,7 @@ export default function Home() {
                       <div className="w-full flex items-center justify-center">
                         <div className={`relative rounded-2xl sm:rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-cyan' : 'halo-neutral'}`}>
                           <Image
-                            src={first.coverImage}
+                            src={`${basePath}${first.coverImage}`}
                             alt={first.title}
                             width={1400}
                             height={1800}
@@ -311,7 +313,7 @@ export default function Home() {
                       <div className="w-full flex items-center justify-center">
                         <div className={`relative rounded-2xl sm:rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-cyan' : 'halo-neutral'}`}>
                           <Image
-                            src={first.coverImage}
+                            src={`${basePath}${first.coverImage}`}
                             alt={first.title}
                             width={1400}
                             height={1800}
@@ -368,7 +370,7 @@ export default function Home() {
               <Reveal>
                 <div className={`relative rounded-2xl sm:rounded-3xl overflow-hidden max-w-[500px] mx-auto ${dimmed ? 'neon-halo-strong' : 'halo-neutral'}`}>
                   <Image
-                    src="/assets/images/chen-2.png"
+                    src={`${basePath}/assets/images/chen-2.png`}
                     alt="Chen artwork 2"
                     width={500}
                     height={500}
@@ -424,7 +426,7 @@ export default function Home() {
                     <div className="w-full flex items-center justify-center">
                       <div className={`relative rounded-2xl sm:rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-pink' : 'halo-neutral'}`}>
                         <Image
-                          src="/assets/images/chen-3.jpg"
+                          src={`${basePath}/assets/images/chen-3.jpg`}
                           alt="Digital Art Piece"
                           width={1400}
                           height={1800}

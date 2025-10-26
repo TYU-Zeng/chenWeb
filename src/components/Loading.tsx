@@ -52,7 +52,7 @@ export default function Loading({ isLoading, onComplete }: LoadingProps) {
             className="relative mb-8"
           >
             <Image
-              src="/assets/images/logo.png"
+              src="/chenWeb/assets/images/logo.png"
               alt="Holo Shadow Logo"
               width={200}
               height={200}

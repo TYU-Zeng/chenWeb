@@ -5,7 +5,6 @@ A Next.js application showcasing "Rebirth of Light and Shadow: The Metaverse of 
 ## 🚀 Live Demo
 
 - **Main Application**: [https://your-username.github.io/chenWeb](https://your-username.github.io/chenWeb)
-- **Static Landing Page**: [https://your-username.github.io/chenWeb/static](https://your-username.github.io/chenWeb/static)
 
 ## 📁 Project Structure
 
@@ -19,8 +18,6 @@ chenWeb/
 ├── public/               # Static assets
 │   ├── assets/           # Images and media
 │   └── fonts/            # Custom fonts
-├── static/               # Static HTML landing page
-│   └── index.html        # Alternative landing page
 ├── .github/workflows/    # GitHub Actions
 └── next.config.ts        # Next.js configuration
 ```

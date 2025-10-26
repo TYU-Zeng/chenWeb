@@ -52,9 +52,79 @@ export default function Home() {
     return () => clearInterval(id);
   }, [showText, lines.length]);
 
+  // 根据 dimmed 状态切换背景图片
+  useEffect(() => {
+    const body = document.body;
+    // 开灯和关灯都使用 bg.jpg
+    body.style.background = `var(--background) url('/assets/images/bg.jpg') center center / cover no-repeat fixed`;
+    
+    // 清理函数，组件卸载时恢复默认背景
+    return () => {
+      body.style.background = 'var(--background)';
+    };
+  }, [dimmed]);
+
   return (
-    <div className="min-h-screen">
-      <div className="container mx-auto px-6 py-4">
+    <div className="min-h-screen relative">
+      {/* Floating background icons */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Icon 1 - Random position */}
+        <div className="absolute top-[15%] left-[8%] opacity-100">
+          <Image 
+            src="/assets/images/icon1.png" 
+            alt="icon 1" 
+            width={200} 
+            height={200} 
+            className="object-contain floating-icon-1" 
+          />
+        </div>
+        
+        {/* Icon 2 - Random position */}
+        <div className="absolute top-[25%] right-[12%] opacity-100">
+          <Image 
+            src="/assets/images/icon2.png" 
+            alt="icon 2" 
+            width={180} 
+            height={180} 
+            className="object-contain floating-icon-2" 
+          />
+        </div>
+        
+        {/* Icon 3 - Random position */}
+        <div className="absolute top-[60%] left-[5%] opacity-100">
+          <Image 
+            src="/assets/images/icon3.png" 
+            alt="icon 3" 
+            width={220} 
+            height={220} 
+            className="object-contain floating-icon-3" 
+          />
+        </div>
+        
+        {/* Icon 4 - Random position */}
+        <div className="absolute top-[40%] right-[6%] opacity-100">
+          <Image 
+            src="/assets/images/icon4.png" 
+            alt="icon 4" 
+            width={190} 
+            height={190} 
+            className="object-contain floating-icon-4" 
+          />
+        </div>
+        
+        {/* Icon 5 - Random position */}
+        <div className="absolute top-[75%] left-[15%] opacity-100">
+          <Image 
+            src="/assets/images/icon5.png" 
+            alt="icon 5" 
+            width={210} 
+            height={210} 
+            className="object-contain floating-icon-5" 
+          />
+        </div>
+      </div>
+      
+      <div className="container mx-auto px-6 py-4 relative z-10">
         {/* Main Content */}
         <div>
           {/* p1: Image and Story (reveals after scrolling past the intro) */}
@@ -74,6 +144,7 @@ export default function Home() {
             
             {/* Logo Section with Title Overlay */}
             <div className="w-full flex flex-col items-center justify-center mb-20 md:mb-24 relative z-10 mt-8">
+              
               <Reveal delayMs={300}>
                 <div className="relative">
                   <Image
@@ -97,10 +168,11 @@ export default function Home() {
                             <div className="text-center">
                               <CyberText 
                                 text="Holo Shadow" 
-                                className="text-8xl custom-blue-glow" 
+                                className="text-8xl cyan-green-glow" 
                                 glow={false} 
                                 glowColor="cyan" 
                               />
+                              
                             </div>
                         </div>
 
@@ -114,17 +186,43 @@ export default function Home() {
                           </span>
                         </span>
                       </div>
-                    </Reveal>
-                    <Reveal delayMs={700}>
-                      <p className="mt-6 max-w-xl mx-auto text-blue-300 font-medium">
-                        Light × Shadow, Cyber × Calm — a quiet neon that breathes.
-                      </p>
-                    </Reveal>
+                    </Reveal>       
                   </div>
                 </div>
               </Reveal>
             </div>
-            
+
+
+            <div className="w-full flex flex-col items-center justify-center text-center">
+              <h2 className="text-2xl md:text-3xl font-bold purple-pink-glow mt-8" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
+                Rebirth of Light and Shadow: The Metaverse of Shadow Puppetry
+              </h2>
+              <Reveal delayMs={700}>
+                <div className="mt-24 mb-32 max-w-2xl mx-auto text-justify">
+                  <div className="h-8"></div>
+                  <p className="white-glow font-medium text-lg leading-relaxed mb-6">
+                    "Rebirth of Light and Shadow: The Metaverse of Shadow Puppetry" reimagines the ancient Chinese art of shadow puppetry through the lens of AI, digital memory, and metaverse technology.
+                  </p>
+                  <p className="white-glow font-medium text-lg leading-relaxed mb-6">
+                    In this world, traditional puppeteers are replaced by intelligent machines that inherit human craftsmanship, preserving cultural heritage within data and code.
+                  </p>
+                  <p className="white-glow font-medium text-lg leading-relaxed mb-6">
+                    The series explores the blurred boundaries between tradition and innovation, human and machine, control and autonomy.
+                  </p>
+                  <p className="white-glow font-medium text-lg leading-relaxed mb-4">
+                    It raises a question that defines our age:
+                  </p>
+                  <p className="white-glow font-bold text-xl leading-relaxed">
+                    When AI learns our culture and emotions — does tradition die, or does it evolve into something immortal?
+                  </p>
+                  <div className="h-8"></div>
+                </div>
+              </Reveal>
+            </div>
+
+            <div className="h-30 bg-transparent"></div>
+
+
             {/* Top row: pill button centered */}
             <div className="w-full flex items-center justify-center -mt-8 md:-mt-12 mb-16 md:mb-28 relative z-10">
               <motion.button
@@ -156,69 +254,92 @@ export default function Home() {
               </motion.button>
             </div>
 
+            <div className="h-20 bg-transparent"></div>
+
+            {/* Chen-1 Title */}
+            <div className="w-full flex items-center justify-center mb-16">
+              <Reveal delayMs={300}>
+                <h2 className="text-4xl md:text-5xl font-bold white-cyan-blue-glow" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
+                  Behind Shadow
+                </h2>
+              </Reveal>
+            </div>
+
             <div className="h-[80px] md:h-[80px] bg-transparent"></div>
 
-            {/* Two-column: left image larger, right description */}
-            <div className="grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-8 md:gap-10 items-start">
-              {/* Left: image */}
-              <div className="order-1 max-w-[1400px] mx-auto w-full relative z-10">
-                <Reveal>
-                  <div className="w-full flex items-center justify-center">
-                    <div className={`relative rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-cyan' : 'halo-neutral'}`}>
-                    <Image
-                      src={first.coverImage}
-                      alt={first.title}
-                        width={1400}
-                        height={1800}
-                      priority
-                        className={`w-auto max-w-full h-auto object-contain rounded-2xl ${dimmed ? 'neon-image-cyan' : 'neon-image-soft'}`}
-                    />
+            {/* Conditional layout: centered image (lights on) or two-column (lights off) */}
+            <AnimatePresence mode="wait">
+              {!dimmed ? (
+                <motion.div
+                  key="centered"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-full flex justify-center"
+                >
+                  <div className="max-w-[1400px] mx-auto w-full relative z-10">
+                    <Reveal>
+                      <div className="w-full flex items-center justify-center">
+                        <div className={`relative rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-cyan' : 'halo-neutral'}`}>
+                          <Image
+                            src={first.coverImage}
+                            alt={first.title}
+                            width={1400}
+                            height={1800}
+                            priority
+                            className={`w-auto max-w-full h-auto object-contain rounded-2xl ${dimmed ? 'neon-image-cyan' : 'neon-image-soft'}`}
+                          />
+                        </div>
+                      </div>
+                    </Reveal>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="two-column"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-8 md:gap-10 items-start relative"
+                >
+                  {/* Left: image */}
+                  <div className="order-1 max-w-[1400px] mx-auto w-full relative z-10">
+                    <Reveal>
+                      <div className="w-full flex items-center justify-center">
+                        <div className={`relative rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-cyan' : 'halo-neutral'}`}>
+                          <Image
+                            src={first.coverImage}
+                            alt={first.title}
+                            width={1400}
+                            height={1800}
+                            priority
+                            className={`w-auto max-w-full h-auto object-contain rounded-2xl ${dimmed ? 'neon-image-cyan' : 'neon-image-soft'}`}
+                          />
+                        </div>
+                      </div>
+                    </Reveal>
+                  </div>
+
+                  {/* Right: description */}
+                  <div className={`order-2 max-w-1xl md:max-w-1xl w-full relative z-10 -ml-12 justify-self-start overflow-visible ${dimmed ? 'neon-text-cyan-strong' : ''}`}>
+                    <div className="p-6 text-center">
+                      <div className="h-[10px] bg-transparent"></div>
+                      <p className="leading-relaxed mb-4 text-white/70 text-justify text-xl">
+                        In a distant digital future, the art of shadow puppetry is no longer guided by human hands but by an intelligent machine that carries the memories of ancient artisans. A figure with mechanical hands and luminous circuits manipulates a glowing frame where misty mountains and futuristic towers coexist, merging the past and the future into a single vision.
+                      </p>
+                      <p className="leading-relaxed mb-4 text-white/70 text-justify text-xl">
+                        Beneath her, an open book unfolds like a holographic projector, releasing streams of light that bring forgotten stories to life — heroes, spirits, and dreams once told through fragile paper silhouettes now reborn as holographic beings. The red lanterns that once lit wooden stages have transformed into digital orbs, pulsing with data instead of flame.
+                      </p>
+                      <p className="leading-relaxed text-white/70 text-justify text-xl">
+                        She is not merely a performer but a guardian — a keeper behind the shadows — ensuring that tradition endures in the circuitry of memory. The scene reveals a world where culture has transcended its material form, existing eternally in the harmony between code and soul.
+                      </p>
                     </div>
                   </div>
-                </Reveal>
-              </div>
-
-              {/* Right: title (lights on) or description (lights off) */}
-              <div className={`order-2 max-w-1xl md:max-w-1xl w-full relative z-10 -ml-12 justify-self-start overflow-visible ${dimmed ? 'neon-text-cyan-strong' : ''}`}
-              >
-                <AnimatePresence mode="wait">
-                  {!dimmed ? (
-                    <motion.div
-                      key="title"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
-                      className="text-center"
-                    >
-                      <div className="h-[280px] bg-transparent"></div>
-                      <h3 className="text-6xl font-medium text-white/90 mb-2" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
-                        Digital Dreams
-                      </h3>
-                      <p className="text-base md:text-lg text-white/70" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
-                        A journey through cyber aesthetics
-                      </p>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="desc"
-                      initial={{ x: 24, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      exit={{ x: 24, opacity: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="p-6 text-center"
-                    >
-                      <div className="mb-3" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
-                        <CyberText text="Story" className="text-6xl" glow={dimmed} glowColor={dimmed ? "pink" : "cyan"} />
-                      </div>
-                      <div className="h-[10px] bg-transparent"></div>
-                      <p className="leading-relaxed mb-4">{first.description}</p>
-                      <p className="whitespace-pre-line">{first.story}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </section>
 
        
@@ -227,51 +348,21 @@ export default function Home() {
       
           <div className="h-[110px] bg-transparent"></div>
 
-          <section id="p1-icon1" className="mt-52 md:mt-80">
-            {/* Button and Description Area */}
-            <div className="mt-72 flex flex-col items-center gap-8">
-              <Reveal delayMs={120}>
-                <div className="flex items-center justify-center gap-10">
-                  <div onClick={handleActivate} className="cursor-pointer">
-                    <IconButton iconSrc="/assets/images/icon1.png" alt="action" size={230} />
-                  </div>
-                  {/* Static icons (icon2 & icon3) - not buttons */}
-                  <Image src="/assets/images/icon2.png" alt="icon 2" width={220} height={220} className="object-contain" />
-                  <Image src="/assets/images/icon3.png" alt="icon 3" width={220} height={220} className="object-contain" />
-                </div>
-              </Reveal>
-              {showBox && (
-                <div
-                  className="w-full md:max-w-2xl min-h-[80px] p-6 md:p-8 rounded-lg space-y-8 glass-card neon-border"
-                  style={{ animation: 'fadeInBox 400ms ease-out forwards' }}
-                >
-                  <div className="h-[px] bg-transparent"></div>
-                  <div
-                    className="overflow-hidden transition-[max-height] ease-out"
-                    style={{ maxHeight: `${visibleLines * lineHeightPx + 160}px`, transitionDuration: `${speedMs}ms` }}
-                  >
-                    <StreamingText
-                      text={streamingText}
-                      isActive={showText}
-                      speed={speedMs}
-                      dimmed={dimmed}
-                    />
-                  </div>
-                  <style jsx>{`
-                    @keyframes fadeInBox {
-                      from { opacity: 0; transform: translateY(8px); }
-                      to { opacity: 1; transform: translateY(0); }
-                    }
-                  `}</style>
-                </div>
-              )}
-            </div>
-          </section>
 
           <div className="h-[80px] md:h-[80px] bg-transparent"></div>
 
             {/* Part: Chen-2 + Story block */}
-            <div className="w-full flex flex-col items-center justify-center gap-10 mt-8 mb-24">
+            <div className="w-full flex flex-col items-center justify-center gap-10 mt-8 mb-24 relative">
+              
+              {/* Chen-2 Title */}
+              <div className="w-full flex items-center justify-center mb-8">
+                <Reveal delayMs={300}>
+                  <h2 className="text-4xl md:text-5xl font-bold white-purple-glow" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
+                    The Broken Strings
+                  </h2>
+                </Reveal>
+              </div>
+              
               {/* chen-2 image */}
               <Reveal>
                 <div className={`relative rounded-3xl overflow-hidden ${dimmed ? 'neon-halo-strong' : 'halo-neutral'}`}>
@@ -286,50 +377,58 @@ export default function Home() {
                 </div>
               </Reveal>
 
-              {/* story title + description */}
-              <div className={`order-2 max-w-2xl  w-full relative z-10 justify-self-start overflow-visible ${dimmed ? 'neon-text-pink-strong' : ''}`}>
-                <AnimatePresence mode="wait">
+              {/* story title + description - Only show when dimmed (lights off) */}
+              <AnimatePresence>
+                {dimmed && (
                   <motion.div
-                    key="desc"
-                    initial={{ x: 24, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: 24, opacity: 0 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
                     transition={{ duration: 0.5 }}
-                    className={`text-center glass-card neon-border rounded-2xl px-10 md:px-20 ${dimmed ? 'neon-halo-strong' : ''}`}
+                    className={`order-2 max-w-2xl w-full relative z-10 justify-self-start overflow-visible ${dimmed ? 'neon-text-pink-strong' : ''}`}
                   >
-                    <div className="mx-auto max-w-[60ch] md:max-w-[68ch]">
-                      <div className="h-[40px] bg-transparent"></div>
-                      <div className="mb-3" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
-                        <CyberText text="Story" className="text-6xl" glow={dimmed} glowColor={dimmed ? 'yellow' : 'cyan'} />
+                    <div className="text-center px-10 md:px-20">
+                      <div className="mx-auto max-w-[60ch] md:max-w-[68ch]">
+                        <div className="h-[40px] bg-transparent"></div>
+                        <p className="leading-relaxed mb-4 white-purple-glow text-justify text-xl">
+                          A colossal robotic hand hovers over a city of neon rivers and digital twilight, its glowing threads once controlling every move of the shadow dancers below. But as the puppets step into this future skyline, the strings begin to break — one by one.
+                        </p>
+                        <p className="leading-relaxed mb-4 white-purple-glow text-justify text-xl">
+                          Freed from the grasp of their mechanical master, the shadow figures awaken, dancing freely along flowing data streams that wind between towering buildings. Their movements are no longer directed but born of memory, instinct, and the echoes of ancient rhythm.
+                        </p>
+                        <p className="leading-relaxed mb-4 white-purple-glow text-justify text-xl">
+                          In the background, a melting clock and an autumn tree mark the passage of time — symbols of both decay and renewal. The moment the strings break, tradition finds a new pulse; what was once bound to human control becomes alive in its own right.
+                        </p>
+                        <p className="leading-relaxed white-purple-glow text-justify text-xl">
+                          The image captures the paradox of progress — where preservation and transformation intertwine — and where culture, once made of leather and light, now lives within algorithms that remember how to dream.
+                        </p>
+                        <div className="h-[60px] bg-transparent"></div>
                       </div>
-                      <div className="h-[10px] bg-transparent"></div>
-                      <p className="leading-relaxed mb-4">{first.description}</p>
-                      <p className="whitespace-pre-line">{first.story}</p>
-                      <div className="h-[60px] bg-transparent"></div>
                     </div>
                   </motion.div>
-                </AnimatePresence>
-              </div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* New Section: Chen-3 Digital Art Layout */}
             <div className="h-[220px] bg-transparent"></div>
             
             <section id="chen-3-section" className="mt-20 md:mt-28 relative">
+              
               {/* Two-column: left digital art, right description */}
               <div className="grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-8 md:gap-10 items-start">
                 {/* Left: Digital Art Piece */}
                 <div className="order-1 max-w-[1400px] mx-auto w-full relative z-10">
                   <Reveal>
                     <div className="w-full flex items-center justify-center">
-                      <div className={`relative rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-cyan' : 'halo-neutral'}`}>
+                      <div className={`relative rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-pink' : 'halo-neutral'}`}>
                         <Image
                           src="/assets/images/chen-3.jpg"
                           alt="Digital Art Piece"
                           width={1400}
                           height={1800}
                           priority
-                          className={`w-auto max-w-full h-auto object-contain rounded-2xl ${dimmed ? 'neon-image-cyan' : 'neon-image-soft'}`}
+                          className={`w-auto max-w-full h-auto object-contain rounded-2xl ${dimmed ? 'neon-image-pink' : 'neon-image-soft'}`}
                         />
                       </div>
                     </div>
@@ -337,7 +436,7 @@ export default function Home() {
                 </div>
 
                 {/* Right: Title and Story */}
-                <div className={`order-2 max-w-1xl md:max-w-1xl w-full relative z-10 -ml-12 justify-self-start overflow-visible ${dimmed ? 'neon-text-cyan-strong' : ''}`}>
+                <div className={`order-2 max-w-1xl md:max-w-1xl w-full relative z-10 -ml-12 justify-self-start overflow-visible ${dimmed ? 'neon-text-pink-strong' : ''}`}>
                   <AnimatePresence mode="wait">
                     {!dimmed ? (
                       <motion.div
@@ -349,11 +448,11 @@ export default function Home() {
                         className="text-center"
                       >
                         <div className="h-[280px] bg-transparent"></div>
-                        <h3 className="text-6xl font-medium text-white/90 mb-2" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
-                          Stary
+                        <h3 className="text-6xl font-medium purple-pink-glow mb-2" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
+                          The Curtain of the Future
                         </h3>
                         <p className="text-base md:text-lg text-white/70" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
-                          A cyberpunk digital narrative
+                          A digital narrative of heritage and technology
                         </p>
                       </motion.div>
                     ) : (
@@ -366,17 +465,17 @@ export default function Home() {
                         className="p-6 text-center"
                       >
                         <div className="mb-3" style={{ fontFamily: 'CyberCrownFour, sans-serif' }}>
-                          <CyberText text="Stary" className="text-6xl" glow={dimmed} glowColor={dimmed ? "pink" : "cyan"} />
+                          <CyberText text="The Curtain of the Future" className="text-6xl" glow={dimmed} glowColor={dimmed ? "pink" : "cyan"} />
                         </div>
                         <div className="h-[10px] bg-transparent"></div>
-                        <p className="leading-relaxed mb-4 text-white/90">
-                          The first light of dawn brushes the snowy peaks as a sea of clouds rolls below—like stepping into a dream.
+                        <p className="leading-relaxed mb-4 text-white/90 text-justify text-xl">
+                          The traditional stage curtain opens to unveil the prologue of a new kind of shadow play — one where heritage and technology converge beneath the same light. Around the frame, intricate patterns of clouds, flora, and shadow-puppet motifs intertwine with glowing circuits, merging the beauty of craftsmanship with the pulse of the digital age.
                         </p>
-                        <p className="leading-relaxed mb-4 text-white/90">
-                          Shot in the autumn of 2024. I climbed alone to a 4,000m viewpoint, leaving at 3 a.m., feeling my way through the dark just to catch that fleeting perfect light. As the sun slowly rose, golden rays lit the ridgelines. In that moment every trace of fatigue turned into awe. Nature's craftsmanship humbles and inspires me.
+                        <p className="leading-relaxed mb-4 text-white/90 text-justify text-xl">
+                          At the center, the shadow screen becomes more than a performance surface — it is also a mirror. On one side stands the memory of the past: delicate, handcrafted figures fading into light. On the other side, their reflections — futuristic robotic beings — gaze back, quietly taking their place.
                         </p>
-                        <p className="leading-relaxed text-white/90">
-                          This shoot reminded me that the most beautiful views often require the hardest steps. Behind every frame lies countless rounds of waiting and persistence.
+                        <p className="leading-relaxed text-white/90 text-justify text-xl">
+                          The transformation is underway: the tangible world dissolves into pure code, and the silhouettes once carved in leather are reborn as streams of data.
                         </p>
                       </motion.div>
                     )}

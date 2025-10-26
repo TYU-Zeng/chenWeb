@@ -19,7 +19,7 @@ export default function Reveal({
   offsetY = 24,
   className,
 }: RevealProps) {
-  const ref = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -42,9 +42,11 @@ export default function Reveal({
     return () => observer.disconnect();
   }, []);
 
+  const TagComponent = Tag as any;
+
   return (
-    <Tag
-      ref={ref as any}
+    <TagComponent
+      ref={ref}
       style={{
         transition: "opacity 700ms ease, transform 700ms ease",
         transitionDelay: `${delayMs}ms`,
@@ -54,6 +56,6 @@ export default function Reveal({
       className={className}
     >
       {children}
-    </Tag>
+    </TagComponent>
   );
 }

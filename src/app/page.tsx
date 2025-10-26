@@ -308,7 +308,7 @@ export default function Home() {
                   className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-6 md:gap-8 lg:gap-10 items-start relative px-4 sm:px-6"
                 >
                   {/* Left: image */}
-                  <div className="order-1 max-w-[600px] sm:max-w-[700px] md:max-w-[800px] mx-auto w-full relative z-10">
+                  <div className="order-1 max-w-[400px] sm:max-w-[450px] md:max-w-[500px] mx-auto w-full relative z-10">
                     <Reveal>
                       <div className="w-full flex items-center justify-center">
                         <div className={`relative rounded-2xl sm:rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-cyan' : 'halo-neutral'}`}>
@@ -421,15 +421,15 @@ export default function Home() {
               {/* Two-column: left digital art, right description */}
               <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-6 md:gap-8 lg:gap-10 items-start">
                 {/* Left: Digital Art Piece */}
-                <div className="order-1 max-w-[600px] sm:max-w-[700px] md:max-w-[800px] mx-auto w-full relative z-10">
+                <div className="order-1 max-w-[400px] sm:max-w-[450px] md:max-w-[500px] mx-auto w-full relative z-10">
                   <Reveal>
                     <div className="w-full flex items-center justify-center">
                       <div className={`relative rounded-2xl sm:rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-pink' : 'halo-neutral'}`}>
                         <Image
                           src={`${basePath}/assets/images/chen-3.jpg`}
                           alt="Digital Art Piece"
-                          width={1400}
-                          height={1800}
+                          width={400}
+                          height={500}
                           priority
                           className={`w-full h-auto object-contain rounded-2xl ${dimmed ? 'neon-image-pink' : 'neon-image-soft'}`}
                         />

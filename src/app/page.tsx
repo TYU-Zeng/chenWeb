@@ -55,8 +55,9 @@ export default function Home() {
   // 根据 dimmed 状态切换背景图片
   useEffect(() => {
     const body = document.body;
+    const basePath = process.env.NODE_ENV === 'production' ? '/chenWeb' : '';
     // 开灯和关灯都使用 bg.jpg
-    body.style.background = `var(--background) url('/assets/images/bg.jpg') center center / cover no-repeat fixed`;
+    body.style.background = `var(--background) url('${basePath}/assets/images/bg.jpg') center center / cover no-repeat fixed`;
     
     // 清理函数，组件卸载时恢复默认背景
     return () => {

@@ -18,7 +18,7 @@ export default function Home() {
   const [dimmed, setDimmed] = useState(false);
   
   // 获取基础路径
-  const basePath = process.env.NODE_ENV === 'production' ? '/chenWeb' : '';
+  const basePath = process.env.NODE_ENV === 'production' ? '/s3872176-holoshadow' : '';
   const streamingText = `This is a beautiful moment captured in the early morning light.
                         The scene tells a story of tranquility and natural beauty.
                         Every element comes together in perfect harmony.

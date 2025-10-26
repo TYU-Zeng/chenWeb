@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const isProd = process.env.NODE_ENV === 'production';
-const repo = 'chenWeb';
+const repo = 's3872176-holoshadow';
 
 const nextConfig: NextConfig = {
   output: 'export',

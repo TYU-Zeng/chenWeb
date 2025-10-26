@@ -281,15 +281,15 @@ export default function Home() {
                   transition={{ duration: 0.5 }}
                   className="w-full flex justify-center px-4 sm:px-6"
                 >
-                  <div className="max-w-[600px] sm:max-w-[700px] md:max-w-[800px] mx-auto w-full relative z-10">
+                  <div className="max-w-[400px] sm:max-w-[450px] md:max-w-[500px] mx-auto w-full relative z-10">
                     <Reveal>
                       <div className="w-full flex items-center justify-center">
                         <div className={`relative rounded-2xl sm:rounded-3xl overflow-hidden neon-border ${dimmed ? 'neon-halo-cyan' : 'halo-neutral'}`}>
                           <Image
                             src={`${basePath}${first.coverImage}`}
                             alt={first.title}
-                            width={800}
-                            height={1000}
+                            width={400}
+                            height={500}
                             priority
                             className={`w-full h-auto object-contain rounded-2xl ${dimmed ? 'neon-image-cyan' : 'neon-image-soft'}`}
                           />
@@ -315,8 +315,8 @@ export default function Home() {
                           <Image
                             src={`${basePath}${first.coverImage}`}
                             alt={first.title}
-                            width={800}
-                            height={1000}
+                            width={400}
+                            height={500}
                             priority
                             className={`w-full h-auto object-contain rounded-2xl ${dimmed ? 'neon-image-cyan' : 'neon-image-soft'}`}
                           />
@@ -373,7 +373,7 @@ export default function Home() {
                     src={`${basePath}/assets/images/chen-2.png`}
                     alt="Chen artwork 2"
                     width={400}
-                    height={400}
+                    height={500}
                     priority
                     className={`w-full h-auto object-contain rounded-2xl ${dimmed ? 'neon-image-strong' : 'neon-image-soft'}`}
                   />

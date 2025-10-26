@@ -54,15 +54,16 @@ This project is automatically deployed to GitHub Pages using GitHub Actions.
 
 3. **Access your site**:
    - Main app: `https://your-username.github.io/chenWeb`
-   - Static page: `https://your-username.github.io/chenWeb/static`
 
 ## 🎨 Features
 
-- **Interactive Theme Toggle**: Switch between light and dark modes
-- **Dynamic Background**: Changes based on theme state
-- **Responsive Design**: Works on all devices
-- **Smooth Animations**: Framer Motion animations
+- **Interactive Theme Toggle**: Switch between light and dark modes with the light bulb button
+- **Dynamic Background**: Consistent background across all states
+- **Fully Responsive Design**: Optimized for mobile, tablet, and desktop devices
+- **Smooth Animations**: Framer Motion animations with reveal effects
 - **Cyberpunk Aesthetics**: Custom fonts and neon effects
+- **Loading Screen**: Beautiful loading animation on first visit
+- **Conditional Content**: Different layouts for lights on/off states
 
 ## 📝 About
 
